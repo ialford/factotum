@@ -57,7 +57,7 @@ group :application do
   gem 'coffee-rails', '~> 4.0.0'
   gem 'uglifier', ">= 1.3.0"
   gem "pagedown-bootstrap-rails"
-  gem "bootstrap-sass", "~> 3.3.1"
+  gem "bootstrap-sass", "~> 3.4.1"
   gem "font-awesome-rails"
   gem "sentry-raven", "~> 2.7"
 
