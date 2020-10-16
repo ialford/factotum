@@ -22,6 +22,7 @@ test: &test
   <<: *mysql_settings
   database: <%= Rails.application.secrets.database["database"] %>
   username: <%= Rails.application.secrets.database["username"] %>
+  password: <%= Rails.application.secrets.database["password"] %>
 
 prep:
   <<: *mysql_settings
