@@ -21,7 +21,7 @@ jobs:
       mysql:
         image: mariadb:10.2.34
         ports:
-          - 3306
+          - 3306:3306
         env:
           MYSQL_ROOT_PASSWORD: example
         options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
@@ -34,13 +34,6 @@ jobs:
       uses: ruby/setup-ruby@ec106b438a1ff6ff109590de34ddc62c540232e0
       with:
         ruby-version: 2.4
-    - name: Verify MariaDB connection
-      env:
-        PORT: ${{ job.services.mysql.ports[3306] }}
-      run: |
-        while ! mysqladmin ping -h"127.0.0.1" -P"$PORT" --silent; do
-          sleep 1
-        done
     - name: Install bundler
       run: gem install bundler:1.17.3
     - name: Install dependencies
