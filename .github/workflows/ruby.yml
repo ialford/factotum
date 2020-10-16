@@ -45,7 +45,7 @@ jobs:
         MYSQL_PASSWORD: root
       run: |
         cp config/secrets.example.yml config/secrets.yml
-        mysql -uroot -p$MYSQL_PASSWORD -c 'create database factotum_test'
+        mysql -uroot -p$MYSQL_PASSWORD -e 'create database factotum_test'
         RAILS_ENV=test bundle exec rake --trace db:migrate test
     - name: Run tests
       run: bundle exec rspec spec
