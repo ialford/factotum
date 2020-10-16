@@ -48,4 +48,6 @@ jobs:
         mysql -uroot -p$MYSQL_PASSWORD -e 'create database factotum_test'
         RAILS_ENV=test bundle exec rake --trace db:migrate test
     - name: Run tests
+      env:
+        MYSQL_PASSWORD: root
       run: bundle exec rspec spec
