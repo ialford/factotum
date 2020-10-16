@@ -6,7 +6,7 @@ group :application do
   gem 'active_attr'
   gem 'american_date'
   gem 'devise'
-  gem 'hesburgh_assets', :git => 'git@github.com:ndlib/hesburgh_assets.git'
+  gem 'hesburgh_assets', :git => 'https://github.com/ndlib/hesburgh_assets.git'
   gem 'google_drive'
   gem 'jquery-ui-rails'
   gem 'json'
