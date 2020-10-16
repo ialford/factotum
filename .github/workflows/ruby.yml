@@ -19,7 +19,7 @@ jobs:
 
     services:
       mysql:
-        image: mysql:10.2.34
+        image: mariadb:10.2.34
         ports:
           - 3306:3306
         env:
