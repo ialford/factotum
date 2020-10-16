@@ -17,6 +17,14 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    services:
+      mysql:
+        image: mysql:10.2.34
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_ROOT_PASSWORD: example
+        options: --health-cmd="mysqladmin ping" --health-interval=5s --health-timeout=2s --health-retries=3
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
@@ -30,5 +38,10 @@ jobs:
       run: gem install bundler:1.17.3
     - name: Install dependencies
       run: bundle install
+    - name: Pre-test steps
+      run: |
+        cp config/database_example.yml config/database.yml
+        cp config/secrets.example.yml config/secrets.yml
+        RAILS_ENV=test bundle exec rake --trace db:migrate test
     - name: Run tests
       run: bundle exec rspec spec
